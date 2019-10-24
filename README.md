@@ -40,13 +40,21 @@ Install Python 2.7 or newer versions except python 3.3. Python ibm_db driver doe
 You might need zlib, openssl, pip installations if not already available in your setup. 
 
 * Linux/Unix:
-  If you face problems due to missing python header files while installing the driver, you would need to install python developer package and retry install. e.g:
+  * If you face problems due to missing python header files while installing the driver, you would need to install python developer package and retry install. e.g:
 
-```
-    zypper install python-devel
-     or
-    yum install python-devel
-```
+   ```
+       zypper install python-devel
+       or
+       yum install python-devel
+   ```
+  * Python ibm_db driver uses Db2 ODBC and CLI Driver APIs internally and outlined below are the package requirements for the clidirver that must be installed before using the python driver.
+  
+       *Package requirements for SLES and RHEL:*
+    
+       | Package name           | Description                                                         |
+       |    :---:               |     :---:                                                           |
+       | vacpp.rte              | Contains 32 and 64-bit versions of libibmc++.so.1 that is required for Linux on System z.| 
+       
 
 * For installing ibm_db on **Docker Linux container**, you may need to install **gcc, python, pip, python-devel and pam** if not already installed. Refer to [Installation](#docker) for more details.
 
