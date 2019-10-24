@@ -81,6 +81,11 @@ pip3 install ibm_db
 
 ```
 
+* Uninstalling the ibm_db driver :
+```python
+pip uninstall ibm_db
+```
+
 The ODBC and CLI Driver(clidriver) is automatically downloaded at the time of installation and it is recommended to use this driver. However, if you wish to use an existing installation of clidriver or install the clidriver manually and use it, you can set IBM_DB_HOME environment variable. For more information on how to set this variable, refer [Environment Variables](#envvar) section.
 
 * <a name="envvar"></a>Environment Variables:
@@ -95,10 +100,27 @@ The ODBC and CLI Driver(clidriver) is automatically downloaded at the time of in
   Other platforms:
   export IBM_DB_HOME=/home/skauser/clidriver
   ```
+  
+  You are required to set the library path to the clidriver under IBM_DB_HOME to pick this version of the ODBC and CLI Driver.
+  e.g:
+  ```
+  Windows:
+  set LIB = %IBM_DB_HOME%/lib;%LIB%
+ 
+  AIX:
+  export LIBPATH = $IBM_DB_HOME/lib:$LIBPATH
+ 
+  MAC:
+  export DYLD_LIBRARY_PATH = $IBM_DB_HOME/lib:$DYLD_LIBRARY_PATH
+ 
+  Other platforms:
+  export LD_LIBRARY_PATH = $IBM_DB_HOME/lib:$LD_LIBRARY_PATH
+  ```
+ 
   The ODBC and CLI driver is available for download at [Db2 LUW ODBC and CLI Driver](https://public.dhe.ibm.com/ibmdl/export/pub/software/data/db2/drivers/odbc_cli/).
 Refer to ([License requirements](#Licenserequirements)) for more details on the CLI driver for manual download and installation.
-  
-
+ 
+ 
 ## <a name="eg"></a> Quick Example
 ```python
 $ python
@@ -165,6 +187,10 @@ True
 True
 ```
 More examples can be found under ['tests'](https://github.com/ibmdb/python-ibmdb/tree/master/IBM_DB/ibm_db/tests) folder.
+
+[API Documentation](https://github.com/ibmdb/python-ibmdb/wiki/APIs) has examples for each API.
+
+Jupyter Notebook examples can be found here -> [Other Examples](https://github.com/IBM/db2-python/tree/master/Jupyter_Notebooks)
 
 ## <a name="api"></a> API Documentation
 For more information on the APIs supported by ibm_db, please refer to below link:
